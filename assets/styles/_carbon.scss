@@ -1,0 +1,73 @@
+@import './carbon_override';
+// @import 'carbon-components/scss/globals/scss/styles'; // All
+
+$css--font-face: true;
+$css--helpers: true;
+$css--body: true;
+$css--use-layer: true;
+$css--reset: true;
+$css--default-type: true;
+$css--plex: true;
+$css--use-experimental-grid: false;
+$css--use-experimental-grid-fallback: false;
+
+/* Globals */
+@import 'carbon-components/scss/globals/scss/_feature-flags';
+@import 'carbon-components/scss/globals/scss/_vars';
+@import 'carbon-components/scss/globals/scss/_colors';
+@import 'carbon-components/scss/globals/scss/_theme';
+@import 'carbon-components/scss/globals/scss/_mixins';
+@import 'carbon-components/scss/globals/scss/_layout';
+@import 'carbon-components/scss/globals/scss/_layer';
+@import 'carbon-components/scss/globals/scss/_spacing';
+@import 'carbon-components/scss/globals/scss/_typography';
+@import 'carbon-components/scss/globals/scss/vendor/@carbon/elements/scss/import-once/import-once';
+@import 'carbon-components/scss/globals/scss/_css--reset';
+@import 'carbon-components/scss/globals/scss/_css--font-face';
+@import 'carbon-components/scss/globals/scss/_css--helpers';
+@import 'carbon-components/scss/globals/scss/_css--body';
+@import 'carbon-components/scss/globals/grid/_grid';
+
+/* Components */
+@import 'carbon-components/scss/components/button/_button';
+// @import 'carbon-components/scss/components/copy-button/_copy-button';
+// @import 'carbon-components/scss/components/file-uploader/_file-uploader';
+// @import 'carbon-components/scss/components/checkbox/_checkbox';
+// @import 'carbon-components/scss/components/combo-box/_combo-box';
+// @import 'carbon-components/scss/components/radio-button/_radio-button';
+// @import 'carbon-components/scss/components/toggle/_toggle';
+// @import 'carbon-components/scss/components/search/_search';
+// @import 'carbon-components/scss/components/select/_select';
+// @import 'carbon-components/scss/components/text-input/_text-input';
+// @import 'carbon-components/scss/components/text-area/_text-area';
+// @import 'carbon-components/scss/components/number-input/_number-input';
+// @import 'carbon-components/scss/components/form/_form';
+// @import 'carbon-components/scss/components/link/_link';
+// @import 'carbon-components/scss/components/list-box/_list-box';
+// @import 'carbon-components/scss/components/list/_list';
+// @import 'carbon-components/scss/components/data-table/_data-table';
+// @import 'carbon-components/scss/components/structured-list/_structured-list';
+// @import 'carbon-components/scss/components/code-snippet/_code-snippet';
+// @import 'carbon-components/scss/components/overflow-menu/_overflow-menu';
+// @import 'carbon-components/scss/components/content-switcher/_content-switcher';
+// @import 'carbon-components/scss/components/date-picker/_date-picker';
+// @import 'carbon-components/scss/components/dropdown/_dropdown';
+// @import 'carbon-components/scss/components/loading/_loading';
+// @import 'carbon-components/scss/components/modal/_modal';
+// @import 'carbon-components/scss/components/multi-select/_multi-select';
+// @import 'carbon-components/scss/components/notification/_inline-notification';
+// @import 'carbon-components/scss/components/notification/_toast-notification';
+// @import 'carbon-components/scss/components/tooltip/_tooltip';
+// @import 'carbon-components/scss/components/tabs/_tabs';
+// @import 'carbon-components/scss/components/tag/_tag';
+// @import 'carbon-components/scss/components/pagination/_pagination';
+// @import 'carbon-components/scss/components/accordion/_accordion';
+// @import 'carbon-components/scss/components/progress-indicator/_progress-indicator';
+// @import 'carbon-components/scss/components/breadcrumb/_breadcrumb';
+// @import 'carbon-components/scss/components/toolbar/_toolbar';
+// @import 'carbon-components/scss/components/time-picker/_time-picker';
+// @import 'carbon-components/scss/components/slider/_slider';
+// @import 'carbon-components/scss/components/tile/_tile';
+// @import 'carbon-components/scss/components/skeleton/_skeleton';
+// @import 'carbon-components/scss/components/inline-loading/_inline-loading';
+// @import 'carbon-components/scss/components/pagination-nav/_pagination-nav';

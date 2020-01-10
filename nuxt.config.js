@@ -1,17 +1,29 @@
+import meta from './meta.json'
+
 export default {
   mode: 'spa',
   /*
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title: meta.name || 'Van Nguyen',
+    htmlAttrs: {
+      lang: 'vi'
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'target', content: 'all' },
+      { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'mobile-web-app-capable', content: 'yes' },
+      {
+        'http-equiv': 'cleartype',
+        content: 'on'
+      },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content: meta.description || ''
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
@@ -23,11 +35,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['~assets/styles/main'],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/carbon.js'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -39,11 +51,11 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv'
+    // '@nuxtjs/pwa',
+    // 'nuxt-webfontloader',
+    // '@nuxtjs/style-resources',
   ],
   /*
    ** Axios module configuration
