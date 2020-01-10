@@ -12,7 +12,8 @@
 // console.log('three', three)
 
 export default {
-  name: 'Index'
+  name: 'Index',
+  methods: {}
 }
 </script>
 
