@@ -1,122 +1,115 @@
 import * as THREE from 'three'
-import Tile from './Tile'
-import DetailView from './Detail'
-import { ev } from './utils/utils'
 
 import trippyShader from '../glsl/trippyShader.glsl'
 import shapeShader from '../glsl/shapeShader.glsl'
 import revealShader from '../glsl/revealShader.glsl'
 import gooeyShader from '../glsl/gooeyShader.glsl'
 import waveShader from '../glsl/waveShader.glsl'
+import { ev } from './utils/utils'
+import DetailView from './Detail'
+import Tile from './Tile'
 
 const perspective = 800
 
 const shaders = [
-    trippyShader,
-    shapeShader,
-    gooeyShader,
-    waveShader,
-    revealShader,
+  trippyShader,
+  shapeShader,
+  gooeyShader,
+  waveShader,
+  revealShader
 ]
 
-const durations = [
-    0.5,
-    0.5,
-    0.5,
-    0.8,
-    0.8,
-]
+const durations = [0.5, 0.5, 0.5, 0.8, 0.8]
 
 export default class Scene {
+  constructor($scene) {
+    this.container = $scene
+    this.$tiles = document.querySelectorAll('.slideshow-list__el')
 
-    constructor($scene) {
-        this.container = $scene
-        this.$tiles = document.querySelectorAll('.slideshow-list__el')
+    this.W = window.innerWidth
+    this.H = window.innerHeight
 
-        this.W = window.innerWidth
-        this.H = window.innerHeight
+    this.mouse = new THREE.Vector2(0, 0)
+    this.activeTile = null
 
-        this.mouse = new THREE.Vector2(0, 0)
-        this.activeTile = null
+    this.start()
 
-        this.start()
+    this.detailview = new DetailView()
 
-        this.detailview = new DetailView()
+    this.bindEvent()
+  }
 
+  bindEvent() {
+    document.addEventListener('toggleDetail', ({ detail: shouldOpen }) => {
+      this.onToggleView(shouldOpen)
+    })
 
-        this.bindEvent()
-    }
+    window.addEventListener('resize', () => {
+      this.onResize()
+    })
+  }
 
-    bindEvent() {
-        document.addEventListener('toggleDetail', ({ detail: shouldOpen }) => { this.onToggleView(shouldOpen) })
+  start() {
+    this.mainScene = new THREE.Scene()
+    this.initCamera()
+    this.initLights()
 
-        window.addEventListener('resize', () => { this.onResize() })
-    }
+    this.renderer = new THREE.WebGLRenderer({
+      canvas: this.container,
+      alpha: true
+    })
+    this.renderer.setSize(this.W, this.H)
+    this.renderer.setPixelRatio(window.devicePixelRatio)
 
+    this.tiles = Array.from(this.$tiles).map(
+      ($el, i) => new Tile($el, this, durations[i], shaders[i])
+    )
 
-    start() {
-        this.mainScene = new THREE.Scene()
-        this.initCamera()
-        this.initLights()
+    this.update()
+  }
 
-        this.renderer = new THREE.WebGLRenderer({
-            canvas: this.container,
-            alpha: true,
-        })
-        this.renderer.setSize(this.W, this.H)
-        this.renderer.setPixelRatio(window.devicePixelRatio)
+  initCamera() {
+    const fov = (180 * (2 * Math.atan(this.H / 2 / perspective))) / Math.PI
 
-        this.tiles = Array.from(this.$tiles).map(($el, i) => new Tile($el, this, durations[i], shaders[i]))
+    this.camera = new THREE.PerspectiveCamera(fov, this.W / this.H, 1, 10000)
+    this.camera.position.set(0, 0, perspective)
+  }
 
-        this.update()
-    }
+  initLights() {
+    const ambientlight = new THREE.AmbientLight('0xffffff', 2)
+    this.mainScene.add(ambientlight)
+  }
 
-    initCamera() {
-        const fov = (180 * (2 * Math.atan(this.H / 2 / perspective))) / Math.PI
-
-        this.camera = new THREE.PerspectiveCamera(fov, this.W / this.H, 1, 10000)
-        this.camera.position.set(0, 0, perspective)
-    }
-
-    initLights() {
-        const ambientlight = new THREE.AmbientLight(0xffffff, 2)
-        this.mainScene.add(ambientlight)
-    }
-
-
-
-
-    /* Handlers
+  /* Handlers
     --------------------------------------------------------- */
 
-    onResize() {
-        this.W = window.innerWidth
-        this.H = window.innerHeight
+  onResize() {
+    this.W = window.innerWidth
+    this.H = window.innerHeight
 
-        this.camera.aspect = this.W / this.H
+    this.camera.aspect = this.W / this.H
 
-        this.camera.updateProjectionMatrix()
-        this.renderer.setSize(this.W, this.H)
-    }
+    this.camera.updateProjectionMatrix()
+    this.renderer.setSize(this.W, this.H)
+  }
 
-    onToggleView({ target, open }) {
-        this.activeTile = target // !== undefined ? target : this.activeTile
+  onToggleView({ target, open }) {
+    this.activeTile = target // !== undefined ? target : this.activeTile
 
-        ev('lockScroll', { lock: open })
-        ev('tile:zoom', { tile: this.activeTile, open })
-    }
+    ev('lockScroll', { lock: open })
+    ev('tile:zoom', { tile: this.activeTile, open })
+  }
 
-    /* Actions
+  /* Actions
     --------------------------------------------------------- */
 
-    update() {
-        requestAnimationFrame(this.update.bind(this))
+  update() {
+    requestAnimationFrame(this.update.bind(this))
 
-        this.tiles.forEach((tile) => {
-            tile.update()
-        })
+    this.tiles.forEach((tile) => {
+      tile.update()
+    })
 
-        this.renderer.render(this.mainScene, this.camera)
-    }
-
+    this.renderer.render(this.mainScene, this.camera)
+  }
 }

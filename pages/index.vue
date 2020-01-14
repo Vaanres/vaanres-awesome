@@ -4,8 +4,10 @@
       <article class="tile">
         <figure class="tile__figure">
           <img
-            data-src="path/to/my/image.jpg"
-            data-hover="path/to/my/hover-image.jpg"
+            data-src="~assets/img/tiles/woods/base.jpg"
+            data-hover="~assets/img/tiles/woods/hover.jpg"
+            src="~assets/img/tiles/woods/base.jpg"
+            loading="lazy"
             class="tile__image"
             alt="My image"
             width="400"
@@ -42,18 +44,6 @@ export default {
   z-index: 10;
 }
 
-.tile {
-  width: 35vw;
-  flex: 0 0 auto;
-}
-
-.tile__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
 canvas {
   position: fixed;
   left: 0;
@@ -61,5 +51,17 @@ canvas {
   width: 100%;
   height: 100vh;
   z-index: 9;
+}
+
+.tile {
+  width: 35vw;
+  flex: 0 0 auto;
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 }
 </style>
