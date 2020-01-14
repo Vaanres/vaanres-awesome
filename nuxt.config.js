@@ -70,5 +70,13 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  webfontloader: {
+    custom: {
+      families: ['Montserrat:n3,n4,n5,n6', 'Playfair Display:n4,n7'],
+      urls: [
+        'https://fonts.googleapis.com/icon?family=Montserrat:300,400,500,600|Playfair+Display:400,700&display=swap'
+      ]
+    }
   }
 }

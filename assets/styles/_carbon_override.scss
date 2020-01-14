@@ -1,3 +1,10 @@
 $feature-flags: (
   grid-columns-16: true
 );
+
+$carbon--font-families: (
+  'sans':
+    unquote("Montserrat,'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif"),
+  'serif':
+    unquote("'Playfair Display', 'IBM Plex Serif', 'Georgia', Times, serif")
+);
