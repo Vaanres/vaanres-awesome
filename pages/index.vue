@@ -1,94 +1,65 @@
 <template>
-  <div>
-    <section class="container">
-      <article class="tile">
-        <figure class="tile__figure">
-          <img
-            data-src="/img/tiles/woods/base.jpg"
-            data-hover="/img/tiles/woods/hover.jpg"
-            src="/img/tiles/woods/base.jpg"
-            loading="lazy"
-            class="tile__image"
-            alt="My image"
-          />
-        </figure>
-      </article>
-
-      <article
-        v-for="(item, index) in tiles"
-        :id="'title-`${index}`'"
-        :key="index"
-        class="tile"
-      >
-        <figure class="tile__figure">
-          <img
-            data-src="/img/tiles/woods/base.jpg"
-            data-hover="/img/tiles/woods/hover.jpg"
-            src="/img/tiles/woods/base.jpg"
-            loading="lazy"
-            class="tile__image"
-            alt="My image"
-          />
-        </figure>
-      </article>
-    </section>
-
-    <!-- <canvas id="stage"></canvas> -->
-  </div>
+  <section class="content | scrollarea-ctn">
+    <div class="scrollarea | slideshow">
+      <ul class="slideshow-list">
+        <li
+          v-for="(item, index) in tiles"
+          :key="`title-${index}`"
+          class="slideshow-list__el"
+        >
+          <Tile :id="`title-${index}`" class="tile" :tile="item" />
+        </li>
+      </ul>
+    </div>
+    <div class="slideshow__progress-ctn">
+      <span class="slideshow__progress"></span>
+    </div>
+  </section>
 </template>
 
 <script>
-// import gsap from 'gsap'
-// import * as three from 'three'
-
-// console.log('gsap', gsap)
-// console.log('three', three)
+import Stage from '~/components/Stage'
+import Tile from '~/components/Tile'
 
 export default {
   name: 'Index',
+  components: { Tile },
+  extends: Stage,
   data() {
     return {
       tiles: [
         {
           src: '/img/tiles/woods/base.jpg',
           hover: '/img/tiles/woods/hover.jpg',
-          title: 'Lost in The Woods'
+          title: 'Woods',
+          title2: '& Forest'
+        },
+        {
+          src: '/img/tiles/deserts/base.jpg',
+          hover: '/img/tiles/deserts/hover.jpg',
+          title: 'Sand',
+          title2: '& Deserts'
+        },
+        {
+          src: '/img/tiles/snow/base.jpg',
+          hover: '/img/tiles/snow/hover.jpg',
+          title: 'Snow',
+          title2: '& Forzen'
+        },
+        {
+          src: '/img/tiles/rocks/base.jpg',
+          hover: '/img/tiles/rocks/hover.jpg',
+          title: 'Rocks',
+          title2: '& Mountain'
+        },
+        {
+          src: '/img/tiles/cities/base.jpg',
+          hover: '/img/tiles/cities/hover.jpg',
+          title: 'Cities',
+          title2: '& Skylines'
         }
       ]
     }
-  },
-  methods: {}
-}
-</script>
-
-<style lang="scss">
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  z-index: 10;
-}
-
-canvas {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 9;
-}
-
-.tile {
-  width: 35vw;
-  flex: 0 0 auto;
-
-  &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
   }
 }
-</style>
+</script>

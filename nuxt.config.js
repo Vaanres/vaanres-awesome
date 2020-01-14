@@ -52,10 +52,10 @@ export default {
    */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/style-resources'
     // '@nuxtjs/pwa',
     // 'nuxt-webfontloader',
-    // '@nuxtjs/style-resources',
   ],
   /*
    ** Axios module configuration
@@ -84,5 +84,8 @@ export default {
         'https://fonts.googleapis.com/icon?family=Montserrat:300,400,500,600|Playfair+Display:400,700&display=swap'
       ]
     }
+  },
+  styleResources: {
+    scss: ['~assets/styles/public.scss']
   }
 }

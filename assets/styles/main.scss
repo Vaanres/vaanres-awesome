@@ -1,2 +1,13 @@
-@import './carbon';
+// @import './carbon';
+
 @import './utils';
+
+@import './reset';
+@import './base';
+
+@import './main';
+@import './typography';
+@import './detailview';
+
+@import './blocks/slideshow';
+@import './blocks/tile';
