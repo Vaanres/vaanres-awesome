@@ -1,5 +1,5 @@
 @import './carbon_override';
-// @import 'carbon-components/scss/globals/scss/styles'; // All
+//@import 'carbon-components/scss/globals/scss/styles'; // All
 
 $css--font-face: true;
 $css--helpers: true;
@@ -11,7 +11,7 @@ $css--plex: true;
 $css--use-experimental-grid: false;
 $css--use-experimental-grid-fallback: false;
 
-/* Globals */
+// /* Globals */
 @import 'carbon-components/scss/globals/scss/_feature-flags';
 @import 'carbon-components/scss/globals/scss/_vars';
 @import 'carbon-components/scss/globals/scss/_colors';
@@ -29,7 +29,7 @@ $css--use-experimental-grid-fallback: false;
 @import 'carbon-components/scss/globals/grid/_grid';
 
 /* Components */
-@import 'carbon-components/scss/components/button/_button';
+// @import 'carbon-components/scss/components/button/_button';
 // @import 'carbon-components/scss/components/copy-button/_copy-button';
 // @import 'carbon-components/scss/components/file-uploader/_file-uploader';
 // @import 'carbon-components/scss/components/checkbox/_checkbox';

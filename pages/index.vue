@@ -4,20 +4,36 @@
       <article class="tile">
         <figure class="tile__figure">
           <img
-            data-src="~assets/img/tiles/woods/base.jpg"
-            data-hover="~assets/img/tiles/woods/hover.jpg"
-            src="~assets/img/tiles/woods/base.jpg"
+            data-src="/img/tiles/woods/base.jpg"
+            data-hover="/img/tiles/woods/hover.jpg"
+            src="/img/tiles/woods/base.jpg"
             loading="lazy"
             class="tile__image"
             alt="My image"
-            width="400"
-            height="300"
+          />
+        </figure>
+      </article>
+
+      <article
+        v-for="(item, index) in tiles"
+        :id="'title-`${index}`'"
+        :key="index"
+        class="tile"
+      >
+        <figure class="tile__figure">
+          <img
+            data-src="/img/tiles/woods/base.jpg"
+            data-hover="/img/tiles/woods/hover.jpg"
+            src="/img/tiles/woods/base.jpg"
+            loading="lazy"
+            class="tile__image"
+            alt="My image"
           />
         </figure>
       </article>
     </section>
 
-    <canvas id="stage"></canvas>
+    <!-- <canvas id="stage"></canvas> -->
   </div>
 </template>
 
@@ -30,6 +46,17 @@
 
 export default {
   name: 'Index',
+  data() {
+    return {
+      tiles: [
+        {
+          src: '/img/tiles/woods/base.jpg',
+          hover: '/img/tiles/woods/hover.jpg',
+          title: 'Lost in The Woods'
+        }
+      ]
+    }
+  },
   methods: {}
 }
 </script>
