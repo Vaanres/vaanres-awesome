@@ -22,7 +22,7 @@
     "@nuxtjs/style-resources": "^1.0.0",
     "carbon-components": "^10.9.0",
     "charming": "^3.0.1",
-    "gsap": "^3.0.5",
+    "gsap": "^3.6.0",
     "lodash": "^4.17.15",
     "nuxt": "^2.11.0",
     "nuxt-webfontloader": "^1.1.0",
